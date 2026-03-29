@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpankOS | MacBook Accelerometer Actions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --text: #ffffff;
+            --secondary: #a1a1a1;
+            --accent: #0071e3;
+            --card-bg: #111111;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            color: var(--accent);
+        }
+
+        .hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(180deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 99px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--text);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text);
+            border: 1px solid #333;
+        }
+
+        .btn-secondary:hover {
+            background-color: #111;
+        }
+
+        .features {
+            padding: 6rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid #222;
+            transition: border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .demo-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .code-box {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            font-family: 'JetBrains Mono', monospace;
+            display: inline-block;
+            text-align: left;
+            margin-top: 2rem;
+            color: #888;
+        }
+
+        .code-box span {
+            color: var(--accent);
+        }
+
+        footer {
+            padding: 4rem 0;
+            border-top: 1px solid #222;
+            text-align: center;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .coffee-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .hero { padding: 4rem 0; }
+        }
+        
+        /* Waveform Animation */
+        .waveform {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            height: 40px;
+            margin-bottom: 2rem;
+        }
+        .bar {
+            width: 4px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 2px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0%, 100% { height: 10px; }
+            50% { height: 35px; }
+        }
+        .bar:nth-child(2) { animation-delay: 0.1s; }
+        .bar:nth-child(3) { animation-delay: 0.2s; }
+        .bar:nth-child(4) { animation-delay: 0.3s; }
+        .bar:nth-child(5) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">~</span> SpankOS
+            </div>
+            <a href="https://github.com/gtchakama/spank-os" class="btn btn-secondary">GitHub</a>
+        </header>
+
+        <section class="hero">
+            <div class="waveform">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <h1>Your MacBook, <br>Responsive as ever.</h1>
+            <p>Turn physical taps on your Apple Silicon MacBook into instant system actions. A professional interface for your laptop's built-in accelerometer.</p>
+            <div class="cta-group">
+                <a href="#" class="btn btn-primary">Download for macOS</a>
+                <a href="#features" class="btn btn-secondary">Learn more</a>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="feature-card">
+                <span class="icon">📸</span>
+                <h3>Instant Capture</h3>
+                <p>Map a tap to take a screenshot directly to your clipboard. No shortcuts needed.</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🌗</span>
+                <h3>Focus Mode</h3>
+                <p>Toggle system-wide Dark Mode with a single firm tap on your chassis.</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🎙️</span>
+                <h3>Meeting Control</h3>
+                <p>Instantly mute or unmute your microphone during calls with a physical gesture.</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🎵</span>
+                <h3>Haptic Audio</h3>
+                <p>Assign custom sound libraries to trigger on every impact. Responsive and fun.</p>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>Ready in seconds</h2>
+            <p style="margin-top: 1rem; color: var(--secondary);">Zero configuration required. Just run the setup and start tapping.</p>
+            <div class="code-box">
+                $ chmod +x setup-spankos.sh<br>
+                $ <span>./setup-spankos.sh</span><br>
+                $ open /Applications/SpankOS.app
+            </div>
+        </section>
+
+        <footer>
+            <p>Built by <a href="https://gtchakama.com" style="color: inherit;">George Chakama</a></p>
+            <p style="margin-top: 1rem;"><a href="https://www.buymeacoffee.com/gtchakama" class="coffee-link">☕ Buy me a coffee</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Future interactions can be added here
+        document.querySelector('.btn-primary').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('SpankOS is currently in private preview. Check GitHub for build instructions!');
+        });
+    </script>
+</body>
+</html>
